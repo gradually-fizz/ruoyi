@@ -10,31 +10,31 @@ import com.ruoyi.project.manage.service.IMngTemplateService;
 
 /**
  * 变化点模板Service业务层处理
- * 
+ *
  * @author ruoyi
- * @date 2021-02-19
+ * @date 2021-02-20
  */
 @Service
-public class MngTemplateServiceImpl implements IMngTemplateService 
+public class MngTemplateServiceImpl implements IMngTemplateService
 {
     @Autowired
     private MngTemplateMapper mngTemplateMapper;
 
     /**
      * 查询变化点模板
-     * 
-     * @param group 变化点模板ID
+     *
+     * @param grouping 变化点模板ID
      * @return 变化点模板
      */
     @Override
-    public MngTemplate selectMngTemplateById(String group)
+    public MngTemplate selectMngTemplateById(String grouping)
     {
-        return mngTemplateMapper.selectMngTemplateById(group);
+        return mngTemplateMapper.selectMngTemplateById(grouping);
     }
 
     /**
      * 查询变化点模板列表
-     * 
+     *
      * @param mngTemplate 变化点模板
      * @return 变化点模板
      */
@@ -44,9 +44,14 @@ public class MngTemplateServiceImpl implements IMngTemplateService
         return mngTemplateMapper.selectMngTemplateList(mngTemplate);
     }
 
+    @Override
+    public List<MngTemplate> selectMngTemplateAll() {
+        return mngTemplateMapper.selectMngTemplateAll();
+    }
+
     /**
      * 新增变化点模板
-     * 
+     *
      * @param mngTemplate 变化点模板
      * @return 结果
      */
@@ -59,7 +64,7 @@ public class MngTemplateServiceImpl implements IMngTemplateService
 
     /**
      * 修改变化点模板
-     * 
+     *
      * @param mngTemplate 变化点模板
      * @return 结果
      */
@@ -72,25 +77,25 @@ public class MngTemplateServiceImpl implements IMngTemplateService
 
     /**
      * 批量删除变化点模板
-     * 
-     * @param groups 需要删除的变化点模板ID
+     *
+     * @param groupings 需要删除的变化点模板ID
      * @return 结果
      */
     @Override
-    public int deleteMngTemplateByIds(String[] groups)
+    public int deleteMngTemplateByIds(String[] groupings)
     {
-        return mngTemplateMapper.deleteMngTemplateByIds(groups);
+        return mngTemplateMapper.deleteMngTemplateByIds(groupings);
     }
 
     /**
      * 删除变化点模板信息
-     * 
-     * @param group 变化点模板ID
+     *
+     * @param grouping 变化点模板ID
      * @return 结果
      */
     @Override
-    public int deleteMngTemplateById(String group)
+    public int deleteMngTemplateById(String grouping)
     {
-        return mngTemplateMapper.deleteMngTemplateById(group);
+        return mngTemplateMapper.deleteMngTemplateById(grouping);
     }
 }

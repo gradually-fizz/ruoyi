@@ -22,9 +22,9 @@ import com.ruoyi.framework.web.page.TableDataInfo;
 
 /**
  * 变化点模板Controller
- * 
+ *
  * @author ruoyi
- * @date 2021-02-19
+ * @date 2021-02-20
  */
 @RestController
 @RequestMapping("/manage/template")
@@ -40,12 +40,16 @@ public class MngTemplateController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(MngTemplate mngTemplate)
     {
-        System.out.println("manage:template:list");
         startPage();
         List<MngTemplate> list = mngTemplateService.selectMngTemplateList(mngTemplate);
         return getDataTable(list);
     }
-
+    @PreAuthorize("@ss.hasPermi('manage:template:list')")
+    @GetMapping("/all")
+    public List<MngTemplate> all()
+    {
+        return mngTemplateService.selectMngTemplateAll();
+    }
     /**
      * 导出变化点模板列表
      */
@@ -63,10 +67,10 @@ public class MngTemplateController extends BaseController
      * 获取变化点模板详细信息
      */
     @PreAuthorize("@ss.hasPermi('manage:template:query')")
-    @GetMapping(value = "/{group}")
-    public AjaxResult getInfo(@PathVariable("group") String group)
+    @GetMapping(value = "/{grouping}")
+    public AjaxResult getInfo(@PathVariable("grouping") String grouping)
     {
-        return AjaxResult.success(mngTemplateService.selectMngTemplateById(group));
+        return AjaxResult.success(mngTemplateService.selectMngTemplateById(grouping));
     }
 
     /**
@@ -96,9 +100,9 @@ public class MngTemplateController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('manage:template:remove')")
     @Log(title = "变化点模板", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{groups}")
-    public AjaxResult remove(@PathVariable String[] groups)
+    @DeleteMapping("/{groupings}")
+    public AjaxResult remove(@PathVariable String[] groupings)
     {
-        return toAjax(mngTemplateService.deleteMngTemplateByIds(groups));
+        return toAjax(mngTemplateService.deleteMngTemplateByIds(groupings));
     }
 }

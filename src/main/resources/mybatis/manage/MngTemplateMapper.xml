@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.project.manage.mapper.MngTemplateMapper">
-    
+
     <resultMap type="MngTemplate" id="MngTemplateResult">
-        <result property="group"    column="group"    />
+        <result property="mygrouping"    column="myGrouping"    />
         <result property="category"    column="category"    />
         <result property="items"    column="items"    />
         <result property="item"    column="item"    />
-        <result property="exception"    column="exception"    />
+        <result property="myexception"    column="myException"    />
         <result property="recognizednum"    column="recognizedNum"    />
         <result property="recognizeditem"    column="recognizedItem"    />
         <result property="responsible"    column="responsible"    />
         <result property="result"    column="result"    />
-        <result property="time"    column="time"    />
+        <result property="acktime"    column="ackTime"    />
         <result property="unexceptednum"    column="unexceptedNum"    />
         <result property="unexcepteditem"    column="unexceptedItem"    />
-        <result property="create"    column="create"    />
+        <result property="creatematter"    column="createMatter"    />
         <result property="summary"    column="summary"    />
         <result property="createBy"    column="create_by"    />
         <result property="createTime"    column="create_time"    />
@@ -27,78 +27,81 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectMngTemplateVo">
-        select 'group', category, items, item, 'exception', recognizedNum, recognizedItem, responsible, result, 'time', unexceptedNum, unexceptedItem, 'create', summary, create_by, create_time, update_by, update_time, remark from mng_template
+        select myGrouping, category, items, item, myException, recognizedNum, recognizedItem, responsible, result, ackTime, unexceptedNum, unexceptedItem, createMatter, summary, create_by, create_time, update_by, update_time, remark from mng_template
     </sql>
+    <select id="selectMngTemplateAll" resultMap="MngTemplateResult">
+        select myGrouping, category, items, item, myException, recognizedNum, recognizedItem, responsible, result, ackTime, unexceptedNum, unexceptedItem, createMatter, summary, create_by, create_time, update_by, update_time, remark from mng_template
+    </select>
 
     <select id="selectMngTemplateList" parameterType="MngTemplate" resultMap="MngTemplateResult">
         <include refid="selectMngTemplateVo"/>
-        <where>  
-            <if test="group != null  and group != ''"> and 'group' = #{group}</if>
+        <where>
+            <if test="mygrouping != null  and mygrouping != ''"> and myGrouping = #{mygrouping}</if>
             <if test="category != null  and category != ''"> and category = #{category}</if>
             <if test="items != null  and items != ''"> and items = #{items}</if>
             <if test="item != null  and item != ''"> and item = #{item}</if>
-            <if test="exception != null  and exception != ''"> and 'exception' = #{exception}</if>
+            <if test="myexception != null  and myexception != ''"> and myException = #{myexception}</if>
             <if test="recognizednum != null  and recognizednum != ''"> and recognizedNum = #{recognizednum}</if>
             <if test="recognizeditem != null  and recognizeditem != ''"> and recognizedItem = #{recognizeditem}</if>
             <if test="responsible != null  and responsible != ''"> and responsible = #{responsible}</if>
             <if test="result != null  and result != ''"> and result = #{result}</if>
-            <if test="time != null  and time != ''"> and 'time' = #{time}</if>
+            <if test="acktime != null  and acktime != ''"> and ackTime = #{acktime}</if>
             <if test="unexceptednum != null  and unexceptednum != ''"> and unexceptedNum = #{unexceptednum}</if>
             <if test="unexcepteditem != null  and unexcepteditem != ''"> and unexceptedItem = #{unexcepteditem}</if>
-            <if test="create != null  and create != ''"> and 'create' = #{create}</if>
+            <if test="creatematter != null  and creatematter != ''"> and createMatter = #{creatematter}</if>
             <if test="summary != null  and summary != ''"> and summary = #{summary}</if>
         </where>
     </select>
-    
+
     <select id="selectMngTemplateById" parameterType="String" resultMap="MngTemplateResult">
         <include refid="selectMngTemplateVo"/>
-        where 'group' = #{group}
+        where myGrouping = #{mygrouping}
     </select>
-        
+
     <insert id="insertMngTemplate" parameterType="MngTemplate">
         insert into mng_template
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="group != null and group != ''">'group',</if>
+            <if test="mygrouping != null and mygrouping != ''">myGrouping,</if>
             <if test="category != null and category != ''">category,</if>
             <if test="items != null and items != ''">items,</if>
             <if test="item != null and item != ''">item,</if>
-            <if test="exception != null">'exception',</if>
+            <if test="myexception != null">myException,</if>
             <if test="recognizednum != null">recognizedNum,</if>
             <if test="recognizeditem != null">recognizedItem,</if>
             <if test="responsible != null">responsible,</if>
             <if test="result != null">result,</if>
-            <if test="time != null">'time',</if>
+            <if test="acktime != null">ackTime,</if>
             <if test="unexceptednum != null">unexceptedNum,</if>
             <if test="unexcepteditem != null">unexceptedItem,</if>
-            <if test="create != null">'create',</if>
+            <if test="creatematter != null">createMatter,</if>
             <if test="summary != null">summary,</if>
             <if test="createBy != null">create_by,</if>
             <if test="createTime != null">create_time,</if>
             <if test="updateBy != null">update_by,</if>
             <if test="updateTime != null">update_time,</if>
             <if test="remark != null">remark,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="group != null and group != ''">#{group},</if>
+            <if test="mygrouping != null and mygrouping != ''">#{mygrouping},</if>
             <if test="category != null and category != ''">#{category},</if>
             <if test="items != null and items != ''">#{items},</if>
             <if test="item != null and item != ''">#{item},</if>
-            <if test="exception != null">#{exception},</if>
+            <if test="myexception != null">#{myexception},</if>
             <if test="recognizednum != null">#{recognizednum},</if>
             <if test="recognizeditem != null">#{recognizeditem},</if>
             <if test="responsible != null">#{responsible},</if>
             <if test="result != null">#{result},</if>
-            <if test="time != null">#{time},</if>
+            <if test="acktime != null">#{acktime},</if>
             <if test="unexceptednum != null">#{unexceptednum},</if>
             <if test="unexcepteditem != null">#{unexcepteditem},</if>
-            <if test="create != null">#{create},</if>
+            <if test="creatematter != null">#{creatematter},</if>
             <if test="summary != null">#{summary},</if>
             <if test="createBy != null">#{createBy},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="updateBy != null">#{updateBy},</if>
             <if test="updateTime != null">#{updateTime},</if>
             <if test="remark != null">#{remark},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateMngTemplate" parameterType="MngTemplate">
@@ -107,15 +110,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="category != null and category != ''">category = #{category},</if>
             <if test="items != null and items != ''">items = #{items},</if>
             <if test="item != null and item != ''">item = #{item},</if>
-            <if test="exception != null">'exception' = #{exception},</if>
+            <if test="myexception != null">myException = #{myexception},</if>
             <if test="recognizednum != null">recognizedNum = #{recognizednum},</if>
             <if test="recognizeditem != null">recognizedItem = #{recognizeditem},</if>
             <if test="responsible != null">responsible = #{responsible},</if>
             <if test="result != null">result = #{result},</if>
-            <if test="time != null">'time' = #{time},</if>
+            <if test="acktime != null">ackTime = #{acktime},</if>
             <if test="unexceptednum != null">unexceptedNum = #{unexceptednum},</if>
             <if test="unexcepteditem != null">unexceptedItem = #{unexcepteditem},</if>
-            <if test="create != null">'create' = #{create},</if>
+            <if test="creatematter != null">createMatter = #{creatematter},</if>
             <if test="summary != null">summary = #{summary},</if>
             <if test="createBy != null">create_by = #{createBy},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
@@ -123,17 +126,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="remark != null">remark = #{remark},</if>
         </trim>
-        where 'group' = #{group}
+        where myGrouping = #{mygrouping}
     </update>
 
     <delete id="deleteMngTemplateById" parameterType="String">
-        delete from mng_template where 'group' = #{group}
+        delete from mng_template where myGrouping = #{mygrouping}
     </delete>
 
     <delete id="deleteMngTemplateByIds" parameterType="String">
-        delete from mng_template where 'group' in 
-        <foreach item="group" collection="array" open="(" separator="," close=")">
-            #{group}
+        delete from mng_template where myGrouping in
+        <foreach item="mygrouping" collection="array" open="(" separator="," close=")">
+            #{mygrouping}
         </foreach>
     </delete>
 </mapper>

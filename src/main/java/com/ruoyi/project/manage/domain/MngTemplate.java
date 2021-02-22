@@ -7,9 +7,9 @@ import com.ruoyi.framework.web.domain.BaseEntity;
 
 /**
  * 变化点模板对象 mng_template
- * 
+ *
  * @author ruoyi
- * @date 2021-02-19
+ * @date 2021-02-20
  */
 public class MngTemplate extends BaseEntity
 {
@@ -17,7 +17,7 @@ public class MngTemplate extends BaseEntity
 
     /** 分组 */
     @Excel(name = "分组")
-    private String group;
+    private String mygrouping;
 
     /** 类别 */
     @Excel(name = "类别")
@@ -33,7 +33,7 @@ public class MngTemplate extends BaseEntity
 
     /** 未执行到位产生异常 */
     @Excel(name = "未执行到位产生异常")
-    private String exception;
+    private String myexception;
 
     /** 已识别变化点数量 */
     @Excel(name = "已识别变化点数量")
@@ -53,7 +53,7 @@ public class MngTemplate extends BaseEntity
 
     /** 计划确认时间 */
     @Excel(name = "计划确认时间")
-    private String time;
+    private String acktime;
 
     /** 突发变化点数量 */
     @Excel(name = "突发变化点数量")
@@ -65,135 +65,135 @@ public class MngTemplate extends BaseEntity
 
     /** 创建追踪事项 */
     @Excel(name = "创建追踪事项")
-    private String create;
+    private String creatematter;
 
     /** 早会总结 */
     @Excel(name = "早会总结")
     private String summary;
 
-    public void setGroup(String group) 
+    public void setMygrouping(String mygrouping)
     {
-        this.group = group;
+        this.mygrouping = mygrouping;
     }
 
-    public String getGroup() 
+    public String getMygrouping()
     {
-        return group;
+        return mygrouping;
     }
-    public void setCategory(String category) 
+    public void setCategory(String category)
     {
         this.category = category;
     }
 
-    public String getCategory() 
+    public String getCategory()
     {
         return category;
     }
-    public void setItems(String items) 
+    public void setItems(String items)
     {
         this.items = items;
     }
 
-    public String getItems() 
+    public String getItems()
     {
         return items;
     }
-    public void setItem(String item) 
+    public void setItem(String item)
     {
         this.item = item;
     }
 
-    public String getItem() 
+    public String getItem()
     {
         return item;
     }
-    public void setException(String exception) 
+    public void setMyexception(String myexception)
     {
-        this.exception = exception;
+        this.myexception = myexception;
     }
 
-    public String getException() 
+    public String getMyexception()
     {
-        return exception;
+        return myexception;
     }
-    public void setRecognizednum(String recognizednum) 
+    public void setRecognizednum(String recognizednum)
     {
         this.recognizednum = recognizednum;
     }
 
-    public String getRecognizednum() 
+    public String getRecognizednum()
     {
         return recognizednum;
     }
-    public void setRecognizeditem(String recognizeditem) 
+    public void setRecognizeditem(String recognizeditem)
     {
         this.recognizeditem = recognizeditem;
     }
 
-    public String getRecognizeditem() 
+    public String getRecognizeditem()
     {
         return recognizeditem;
     }
-    public void setResponsible(String responsible) 
+    public void setResponsible(String responsible)
     {
         this.responsible = responsible;
     }
 
-    public String getResponsible() 
+    public String getResponsible()
     {
         return responsible;
     }
-    public void setResult(String result) 
+    public void setResult(String result)
     {
         this.result = result;
     }
 
-    public String getResult() 
+    public String getResult()
     {
         return result;
     }
-    public void setTime(String time) 
+    public void setAcktime(String acktime)
     {
-        this.time = time;
+        this.acktime = acktime;
     }
 
-    public String getTime() 
+    public String getAcktime()
     {
-        return time;
+        return acktime;
     }
-    public void setUnexceptednum(String unexceptednum) 
+    public void setUnexceptednum(String unexceptednum)
     {
         this.unexceptednum = unexceptednum;
     }
 
-    public String getUnexceptednum() 
+    public String getUnexceptednum()
     {
         return unexceptednum;
     }
-    public void setUnexcepteditem(String unexcepteditem) 
+    public void setUnexcepteditem(String unexcepteditem)
     {
         this.unexcepteditem = unexcepteditem;
     }
 
-    public String getUnexcepteditem() 
+    public String getUnexcepteditem()
     {
         return unexcepteditem;
     }
-    public void setCreate(String create) 
+    public void setCreatematter(String creatematter)
     {
-        this.create = create;
+        this.creatematter = creatematter;
     }
 
-    public String getCreate() 
+    public String getCreatematter()
     {
-        return create;
+        return creatematter;
     }
-    public void setSummary(String summary) 
+    public void setSummary(String summary)
     {
         this.summary = summary;
     }
 
-    public String getSummary() 
+    public String getSummary()
     {
         return summary;
     }
@@ -201,25 +201,25 @@ public class MngTemplate extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("group", getGroup())
-            .append("category", getCategory())
-            .append("items", getItems())
-            .append("item", getItem())
-            .append("exception", getException())
-            .append("recognizednum", getRecognizednum())
-            .append("recognizeditem", getRecognizeditem())
-            .append("responsible", getResponsible())
-            .append("result", getResult())
-            .append("time", getTime())
-            .append("unexceptednum", getUnexceptednum())
-            .append("unexcepteditem", getUnexcepteditem())
-            .append("create", getCreate())
-            .append("summary", getSummary())
-            .append("createBy", getCreateBy())
-            .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
-            .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
-            .toString();
+                .append("mygrouping", getMygrouping())
+                .append("category", getCategory())
+                .append("items", getItems())
+                .append("item", getItem())
+                .append("myexception", getMyexception())
+                .append("recognizednum", getRecognizednum())
+                .append("recognizeditem", getRecognizeditem())
+                .append("responsible", getResponsible())
+                .append("result", getResult())
+                .append("acktime", getAcktime())
+                .append("unexceptednum", getUnexceptednum())
+                .append("unexcepteditem", getUnexcepteditem())
+                .append("creatematter", getCreatematter())
+                .append("summary", getSummary())
+                .append("createBy", getCreateBy())
+                .append("createTime", getCreateTime())
+                .append("updateBy", getUpdateBy())
+                .append("updateTime", getUpdateTime())
+                .append("remark", getRemark())
+                .toString();
     }
 }
